@@ -1,0 +1,6 @@
+<h1><%= @user.name %>のページ</h1>
+
+<p>メールアドレス: <%= @user.email %></p>
+
+<%= link_to "ユーザーを編集する", edit_user_path %>
+<%= link_to "退会する", @user, method: :delete, data: { confirm: "本当にいいですか？" } %>
