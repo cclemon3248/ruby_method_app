@@ -1,0 +1,17 @@
+<h1>ブログ一覧</h1>
+
+<table>
+  <tr>
+    <th>メソッド名</th>
+    <th>内容</th>
+    <th>check</th>
+  </tr>
+
+<% @blogs.each do |blog| %>
+  <tr>
+    <td><%= blog.name %>メソッド</td>
+    <td><%= blog.content %></td>
+    <td></td>
+  </tr>
+<% end %>
+</table>
