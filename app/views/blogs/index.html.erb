@@ -9,7 +9,7 @@
 
 <% @blogs.each do |blog| %>
   <tr>
-    <td><%= blog.name %>メソッド</td>
+    <td><%= link_to blog.name + "メソッド", blog %></td>
     <td><%= blog.content %></td>
     <td></td>
   </tr>

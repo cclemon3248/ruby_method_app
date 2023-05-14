@@ -1,4 +1,4 @@
-<p>メソッド名：<%= @blog.name %>メソッド</p>
+<h2><%= @blog.name %>メソッド</h2>
 <p>定義：<%= @blog.content %></p>
 <p>コード1</p>
 <%= @blog.code1 %>
@@ -7,4 +7,6 @@
 <p>コード3</p>
 <%= @blog.code3 %>
 
+<%= link_to "記事一覧に戻る", blogs_path %>
 <%= link_to "記事を編集する", edit_blog_path(@blog) %>
+<%= link_to "記事を削除する", @blog, method: :delete, data: { confirm: "本当に削除しますか？" }  %>
