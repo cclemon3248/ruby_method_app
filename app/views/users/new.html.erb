@@ -1,2 +1,50 @@
-<h1>Sign up</h1>
-<%= render "form" %>
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this <%= @user.name %> from being saved:</h2>
+    <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="mb-4 login-page col-6">
+  <h2 class="text-center login-title">アカウント作成</h2>
+  <%= form_with(model: @user, local: true) do |f| %>
+    <div class="string-bold">
+      <%= f.label :name, "名前" %>
+    </div>
+    <div>
+      <%= f.text_field :name, class: "col-12" %>
+    </div>
+    <div class="string-bold">
+      <%= f.label :email, "Eメールアドレス" %>
+    </div>
+    <div>
+      <%= f.email_field :email, class: "col-12" %>
+    </div>
+    <div class="string-bold">
+      <%= f.label :password, "パスワード" %>
+    </div>
+    <div>
+      <%= f.password_field :password, class: "col-12" %>
+    </div>
+    <div class="string-bold">
+      <%= f.label :password_confirmation, "パスワード確認" %>
+    </div>
+    <div>
+      <%= f.password_field :password_confirmation, class: "col-12" %>
+    </div>
+    <%= f.submit "新規無料登録", class: "btn btn-primary session_button col-12" %>
+  <% end %>
+  <p class="mt-2 login-guest-font-size">※ゲストログインはこちら</p>
+</div>
+
+<div>
+  <div class="col-6 login">
+    <div class="text-center">
+      <%= link_to "すでにアカウントをお持ちですか？", new_session_path %>
+    </div>
+  </div>
+</div>

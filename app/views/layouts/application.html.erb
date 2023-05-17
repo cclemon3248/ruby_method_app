@@ -12,18 +12,54 @@
 
   <body>
     <div class="container">
-      <% flash.each do |key, value| %>
-        <%= content_tag(:div, value, class: "#{key}") %>
-      <% end %>
+      <header class="bg-light">
+        <% if logged_in? %>
+          <div class="d-flex pt-2 pb-2 pr-3">
+            <ul class="nav flex">
+              <li class="nav-item">
+                <a class="nav-link" href="">トップ</a>
+              </li>
+              <li class="nav-item">
+              <%= link_to "一覧ページ", blogs_path, class: "nav-link" %>
+              <li class="nav-item">
+                <%= link_to "マイページ", user_path(current_user.id), class: "nav-link" %>
+              </li>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">お気に入り</a>
+              </li>
+            </ul>
+            <div class="ml-auto">
+              <%= link_to "ログアウト", session_path(current_user.id), method: :delete, class: "nav-link flex btn btn-secondary" %>
+            </div>
+          </div>
+        <% else %>
+        <div class="d-flex pt-2 pb-2 pr-3">
+          <ul class="nav flex">
+            <li class="nav-item">
+              <a class="nav-link" href="">トップ</a>
+            </li>
+          </ul>
+          <div class="ml-auto">
+            <%= link_to "ログイン", new_session_path, class: "btn btn-secondary " %>
+          </div>
+        </div>
+        <% end %>
+      </header>
+      <div class="main show-main">
+        <% flash.each do |key, value| %>
+          <%= content_tag(:div, value, class: "#{key}") %>
+        <% end %>
 
-      <% if logged_in? %>
-        <%= link_to "Profile", user_path(current_user.id) %>
-        <%= link_to "Logout", session_path(current_user.id), method: :delete %>
-      <% else %>
-        <%= link_to "Sign up", new_user_path %>
-        <%= link_to "Login", new_session_path %>
-      <% end %>
-      <%= yield %>
+        <%= yield %>
+      </div>
+      <footer class="bg-light mt-3">
+        <ul class="nav mt-3 mb-3">
+          <li class="mr-3 nav-item"><a class="nav-link" href="#">プライバシーポリシー</a></li>
+          <li class="mr-3 nav-item"><a class="nav-link" href="#">規約一覧</a></li>
+          <li class="mr-3 nav-item"><a class="nav-link" href="#">お問い合わせ</a></li>
+        </ul>
+      </footer>    
     </div>
   </body>
 </html>

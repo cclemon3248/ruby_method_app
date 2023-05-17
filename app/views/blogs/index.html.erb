@@ -1,17 +1,20 @@
-<h1>ブログ一覧</h1>
+<h2 class="display-5 border-bottom pb-2 mt-3 mb-3">メソッド一覧</h1>
+<p>メソッド一覧です。</p>
 
+
+<h2></h2>
 <table>
   <tr>
-    <th>メソッド名</th>
-    <th>内容</th>
-    <th>check</th>
+    <th class="col-3"></th>
+    <th class="col-7">メソッド名</th>
+    <th class="col-2">check</th>
   </tr>
 
 <% @blogs.each do |blog| %>
   <tr>
-    <td><%= link_to blog.name + "メソッド", blog %></td>
-    <td><%= blog.content %></td>
-    <td></td>
+    <td class="col-2 td1" rowspan=@blogs.count.to_s><strong>Rubyメソッド</strong></td>
+    <td class="col-9"><%= link_to blog.name + "メソッド", blog %></td>
+    <td class="col-1"></td>
   </tr>
 <% end %>
 </table>
