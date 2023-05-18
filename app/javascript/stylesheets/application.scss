@@ -1,17 +1,44 @@
 @import '~bootstrap/scss/bootstrap';
 
+body {
+  background-color: #E3F1F7;
+}
+
+#header {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+#logo {
+  padding-left: 30px;
+}
+
+#logo p {
+  margin-bottom: 0;
+}
+
+#logo h1 {
+  margin-bottom: 0;
+}
+
 .container {
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
   padding: 0;
+}
+
+.nav-wrapper {
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 .main {
   flex: 1;
-  margin: 10px;
+  margin: 0 10px 10px 10px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 footer ul {
@@ -145,4 +172,47 @@ footer a {
   background-color: #e6a9ab;
   padding: 10px;
   margin-bottom: 10px;
+}
+
+.top-image {
+  border: 1px solid #000000;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+#article {
+  background-color: #eeeeef;
+}
+
+#article p {
+  font-size: 12px;
+}
+
+.article-link {
+  text-align: right;
+}
+
+.top-main {
+  display: flex;
+}
+
+.main-image {
+  flex: 1;
+}
+
+.method-image {
+  display: flex;
+}
+
+.method-block {
+  flex: 1;
+  border: 1px solid #000000;
+  margin-right: 20px;
+  padding: 20px;
+  text-align: center;
+}
+
+.method-image1 {
+  width: 150px;
+  height: 150px;
 }

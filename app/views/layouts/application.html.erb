@@ -12,39 +12,49 @@
 
   <body>
     <div class="container">
-      <header class="bg-light">
-        <% if logged_in? %>
-          <div class="d-flex pt-2 pb-2 pr-3">
-            <ul class="nav flex">
-              <li class="nav-item">
-                <a class="nav-link" href="">トップ</a>
-              </li>
-              <li class="nav-item">
-              <%= link_to "一覧ページ", blogs_path, class: "nav-link" %>
-              <li class="nav-item">
-                <%= link_to "マイページ", user_path(current_user.id), class: "nav-link" %>
-              </li>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">お気に入り</a>
-              </li>
-            </ul>
-            <div class="ml-auto">
-              <%= link_to "ログアウト", session_path(current_user.id), method: :delete, class: "nav-link flex btn btn-secondary" %>
-            </div>
-          </div>
-        <% else %>
-        <div class="d-flex pt-2 pb-2 pr-3">
-          <ul class="nav flex">
-            <li class="nav-item">
-              <a class="nav-link" href="">トップ</a>
-            </li>
-          </ul>
-          <div class="ml-auto">
-            <%= link_to "ログイン", new_session_path, class: "btn btn-secondary " %>
+      <header>
+        <div id="header">
+          <div id="logo">
+            <p>初心者のための</p>
+            <h1>RUBYメソッドアプリ</h1>
+            <p>RUBY method app for beginners</p>
           </div>
         </div>
-        <% end %>
+      
+        <div class="bg-light nav-wrapper">
+          <% if logged_in? %>
+            <div class="d-flex pt-2 pb-2 pr-3">
+              <ul class="nav flex">
+                <li class="nav-item">
+                  <%= link_to "トップ", root_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item">
+                <%= link_to "一覧ページ", blogs_path, class: "nav-link" %>
+                <li class="nav-item">
+                  <%= link_to "マイページ", user_path(current_user.id), class: "nav-link" %>
+                </li>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">お気に入り</a>
+                </li>
+              </ul>
+              <div class="ml-auto">
+                <%= link_to "ログアウト", session_path(current_user.id), method: :delete, class: "nav-link flex btn btn-secondary" %>
+              </div>
+            </div>
+          <% else %>
+            <div class="d-flex pt-2 pb-2 pr-3">
+              <ul class="nav flex">
+                <li class="nav-item">
+                <%= link_to "トップ", root_path, class: "nav-link" %>
+                </li>
+              </ul>          
+              <div class="ml-auto">
+               <%= link_to "ログイン", new_session_path, class: "btn btn-secondary " %>
+              </div>
+            </div>
+          <% end %>
+        </div>
       </header>
       <div class="main show-main">
         <% flash.each do |key, value| %>
