@@ -2,7 +2,8 @@ class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
 
   def index
-    @blogs = Blog.all
+    @blogs = Blog.where(ruby_rails: 'Ruby')
+    @rails = Blog.where(ruby_rails: 'Rails')
   end
   
   def new
@@ -15,7 +16,7 @@ class BlogsController < ApplicationController
       render :new
     else
       if @blog.save
-        redirect_to @blog, notice: "記事作成をしました！"
+        redirect_to blogs_path, notice: "記事作成をしました！"
       else
         render :new
       end
@@ -23,6 +24,7 @@ class BlogsController < ApplicationController
   end
 
   def show
+    @favorite = current_user.favorites.find_by(blog_id: @blog.id)
   end
 
   def edit
@@ -43,6 +45,7 @@ class BlogsController < ApplicationController
 
   def confirm
     @blog = Blog.new(blog_params)
+
   end
 
 
@@ -53,6 +56,6 @@ class BlogsController < ApplicationController
     end
     
     def blog_params
-      params.require(:blog).permit(:name, :content, :code1, :code2, :code3)
+      params.require(:blog).permit(:name, :content, :code1, :code2, :code3, :ruby_rails)
     end
 end

@@ -1,11 +1,41 @@
-<h2><%= @blog.name %>メソッド</h2>
-<p>定義：<%= @blog.content %></p>
-<p>コード1</p>
-<%= @blog.code1 %>
-<p>コード2</p>
-<%= @blog.code2 %>
-<p>コード3</p>
-<%= @blog.code3 %>
+<div class="side-by-side border-bottom pb-2 mt-3 mb-3">
+  <h2 class="display-5"><%= @blog.name %>メソッド</h2>
+  <% unless @blog.user_id == current_user.id %>
+    <% if @favorite.present? %>
+      <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger right botton' %>
+    <% else %>
+      <%= link_to 'お気に入りする', favorites_path(blog_id: @blog.id), method: :post, class: 'btn btn-primary right' %>
+    <% end %>
+  <% end %>
+</div>
+
+
+<h3>１。定義</h3>
+<p class="h3-p"><%= @blog.content %></p>
+
+<h3>２。例文</h3>
+<h4>使用例</h4>
+<pre>
+  <code class="ruby">
+    <%= simple_format(@blog.code1) %>
+  </code>
+</pre>
+
+<% if @blog.code2.present? %>
+  <pre>
+    <code class="ruby">
+      <%= simple_format(@blog.code2) %>
+    </code>
+  </pre>
+<% end %>
+
+<% if @blog.code3.present? %>
+  <pre>
+    <code class="ruby">
+      <%= simple_format(@blog.code3) %>
+    </code>
+  </pre>
+<% end %>
 
 <%= link_to "記事一覧に戻る", blogs_path %>
 <%= link_to "記事を編集する", edit_blog_path(@blog) %>
