@@ -4,12 +4,15 @@
   <div class="col-6 main-image">
     <h3>記事一覧</h3>
     <div id="article" class="col-12">
-      <p>2023.1.27 おじさんおじさんおじさんおじさんおじさん</p>
-      <p>2023.1.27 おじさんおじさんおじさんおじさんおじさん</p>
-      <p>2023.1.27 おじさんおじさんおじさんおじさんおじさん</p>
-      <p>2023.1.27 おじさんおじさんおじさんおじさんおじさん</p>
-      <p>2023.1.27 おじさんおじさんおじさんおじさんおじさん</p>
-      <p>2023.1.27 おじさんおじさんおじさんおじさんおじさん</p>
+      <% @blogs.each do |blog| %>
+        <%= link_to blog do %>
+          <p>
+            <%= blog.updated_at.strftime("%Y-%m-%d %H:%M:%S") %>
+            &nbsp;&nbsp;&nbsp;
+            <%= "#{blog.name}メソッド" %>
+          </p>
+        <% end %>
+      <% end %>
     </div>
     <div class="article-link">
       <%= link_to "すべての記事を見る", blogs_path %>
