@@ -3,4 +3,12 @@ class HomeController < ApplicationController
   
   def index
   end
+
+  def ruby
+    @blogs = current_user.favorite_blogs.where(ruby_rails: "Ruby")
+  end
+  
+  def rails
+    @rails = current_user.favorite_blogs.where(ruby_rails: "Rails")
+  end
 end

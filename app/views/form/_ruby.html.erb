@@ -1,0 +1,21 @@
+<% if blogs.present? %>
+  <table>
+    <tr>
+      <th class="col-3 index-th"></th>
+      <th class="col-7 index-th">メソッド名</th>
+      <th class="col-2 index-th">check</th>
+    </tr>
+
+    <% blogs.each do |blog| %>
+      <tr>
+        <% if blogs.first.id == blog.id %>
+          <td class="col-2 td1"><strong>Rubyメソッド</strong></td>
+        <% else %>
+          <td class="col-2 td1"></td>
+        <% end %>
+        <td class="col-9"><%= link_to blog.name + "メソッド", blog %></td>
+        <td class="col-1"></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
