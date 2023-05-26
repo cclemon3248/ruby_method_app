@@ -18,6 +18,7 @@ class UsersController < ApplicationController
 
   def show
     @blogs = Blog.all
+    @count = Comprehension.where(user_id: @user.id).count
   end
 
   def edit

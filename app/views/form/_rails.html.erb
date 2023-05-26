@@ -3,7 +3,7 @@
     <tr>
       <th class="col-3 index-th"></th>
       <th class="col-7 index-th">メソッド名</th>
-      <th class="col-2 index-th">check</th>
+      <th class="col-2 index-th text-center">check</th>
     </tr>
 
     <% rails.each do |rail| %>
@@ -14,7 +14,9 @@
           <td class="col-2 td1"></td>
         <% end %>
         <td class="col-9"><%= link_to rail.name + "メソッド", rail %></td>
-        <td class="col-1"></td>
+        <td class="col-1">
+          <%= "✔️" if Comprehension.find_by(user_id: current_user.id, blog_id: rail.id).present? %>
+        </td>
       </tr>
     <% end %>
   </table>
