@@ -11,7 +11,7 @@
   </head>
 
   <body>
-    <div class="container">
+    <div class="container-field container">
       <header>
         <div id="header">
           <div id="logo">
@@ -62,16 +62,13 @@
         <% flash.each do |key, value| %>
           <%= content_tag(:div, value, class: "#{key}") %>
         <% end %>
-
         <%= yield %>
       </div>
-      <footer class="bg-light mt-3">
-        <ul class="nav mt-3 mb-3">
-          <li class="mr-3 nav-item"><a class="nav-link" href="#">プライバシーポリシー</a></li>
-          <li class="mr-3 nav-item"><a class="nav-link" href="#">規約一覧</a></li>
-          <li class="mr-3 nav-item"><a class="nav-link" href="#">お問い合わせ</a></li>
-        </ul>
-      </footer>    
+      <footer class="py-5 bg-light mt-4">
+        <div class="container">
+            <p class="m-0 text-center">RUBYメソッド辞典 &copy; Your Website 2023</p>
+        </div>
+      </footer>
     </div>
   </body>
 </html>
