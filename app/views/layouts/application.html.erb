@@ -61,10 +61,10 @@
           <% end %>
         </div>
       </header>
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "#{key}") %>
+      <% end %>
       <div class="main show-main">
-        <% flash.each do |key, value| %>
-          <%= content_tag(:div, value, class: "#{key}") %>
-        <% end %>
         <%= yield %>
       </div>
       <footer class="py-5 bg-light mt-4">

@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   get '/home/ruby', to: 'home#ruby'
   get '/home/rails', to: 'home#rails'
   resources :users
-  resources :sessions, only: [:new, :create, :destroy]
+  resources :sessions, only: [:new, :create, :destroy] do
+    collection do
+      post :guest_login
+    end
+  end
   resources :blogs do
     collection do
       post :confirm
