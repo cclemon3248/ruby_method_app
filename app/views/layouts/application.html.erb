@@ -19,6 +19,12 @@
             <h1>RUBYメソッド辞典</h1>
             <p>RUBY method app for beginners</p>
           </div>
+          <div id="search">
+            <%= search_form_for @q, url: search_blogs_path do |f| %>
+              <%= f.text_field :name, placeholder: "メソッド名を入力" %>
+              <%= f.submit "検索" %>
+            <% end %>
+          </div>
         </div>
       
         <div class="bg-light nav-wrapper">

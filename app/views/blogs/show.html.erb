@@ -14,20 +14,20 @@
 <p class="h3-p"><%= @blog.content %></p>
 
 <h3>２。例文</h3>
+
+<% if @blog.code1.present? %>
+  <h4>基本構文</h4>
+
+  <%= simple_format @blog.code1, class: "h3-p" %>
+
+<% end %>
+
 <h4>使用例</h4>
 <pre>
   <code class="ruby">
-    <%= simple_format(@blog.code1) %>
+    <%= simple_format(@blog.code2) %>
   </code>
 </pre>
-
-<% if @blog.code2.present? %>
-  <pre>
-    <code class="ruby">
-      <%= simple_format(@blog.code2) %>
-    </code>
-  </pre>
-<% end %>
 
 <% if @blog.code3.present? %>
   <pre>

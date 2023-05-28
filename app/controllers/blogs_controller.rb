@@ -46,9 +46,13 @@ class BlogsController < ApplicationController
 
   def confirm
     @blog = Blog.new(blog_params)
-
   end
 
+  def search
+    search = @q.result.where(name: params[:q][:name])
+    @blogs = search.where(ruby_rails: 'Ruby')
+    @rails = search.where(ruby_rails: 'Rails')
+  end
 
   private
 
