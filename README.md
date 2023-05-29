@@ -5,9 +5,9 @@
 
 ## 実行手順
 > git@github.com:cclemon3248/ruby_method_app.git
->cd ruby_method_app
->bundle install
->rails db:create
->rails db:migrate
->rails db:seed
->rails s
+> cd ruby_method_app
+> bundle install
+> rails db:create
+> rails db:migrate
+> rails db:seed
+> rails s
