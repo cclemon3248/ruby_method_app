@@ -5,6 +5,10 @@ ruby '3.1.3'
 gem 'bcrypt'
 gem 'ransack', '~> 3.2.1'
 
+gem 'net-smtp'
+gem 'net-imap'
+gem 'net-pop'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.7', '>= 6.1.7.3'
 # Use postgresql as the database for Active Record
