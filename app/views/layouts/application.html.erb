@@ -6,11 +6,78 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container-field container">
+      <header>
+        <div id="header">
+          <div id="logo">
+            <p>初心者のための</p>
+            <h1>RUBYメソッド辞典</h1>
+            <p>RUBY method app for beginners</p>
+          </div>
+          <div id="search">
+            <%= search_form_for @q, url: search_blogs_path do |f| %>
+              <%= f.text_field :name, placeholder: "メソッド名を入力" %>
+              <%= f.submit "検索" %>
+            <% end %>
+          </div>
+        </div>
+      
+        <div class="bg-light nav-wrapper">
+          <% if logged_in? %>
+            <div class="d-flex pt-2 pb-2 pr-3">
+              <ul class="nav flex">
+                <li class="nav-item">
+                  <%= link_to "トップ", root_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item">
+                <%= link_to "一覧ページ", blogs_path, class: "nav-link" %>
+                <li class="nav-item">
+                  <%= link_to "マイページ", user_path(current_user.id), class: "nav-link" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "お気に入り", favorites_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "記事作成", new_blog_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "お問い合わせ", "https://docs.google.com/forms/d/e/1FAIpQLSeMj7RSeIMzcMLm86prdtfPEzruKyi8Mbd2Gv71YOTqOCJUBw/viewform", class: "nav-link", target: "_blank" %>
+                </li>
+              </ul>
+              <div class="ml-auto">
+                <%= link_to "ログアウト", session_path(current_user.id), method: :delete, class: "nav-link flex btn btn-secondary" %>
+              </div>
+            </div>
+          <% else %>
+            <div class="d-flex pt-2 pb-2 pr-3">
+              <ul class="nav flex">
+                <li class="nav-item">
+                <%= link_to "トップ", root_path, class: "nav-link" %>
+                </li>
+              </ul>          
+              <div class="ml-auto">
+               <%= link_to "ログイン", new_session_path, class: "btn btn-secondary " %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </header>
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "#{key}") %>
+      <% end %>
+      <div class="main show-main">
+        <%= yield %>
+      </div>
+      <footer class="py-5 bg-light mt-4">
+        <div class="container">
+            <p class="m-0 text-center">RUBYメソッド辞典 &copy; Your Website 2023</p>
+        </div>
+      </footer>
+    </div>
   </body>
 </html>

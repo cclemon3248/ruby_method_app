@@ -1,0 +1,23 @@
+<% if rails.present? %>
+  <table class="container">
+    <tr class="row">
+      <th class="col-2 index-th"></th>
+      <th class="col-9 index-th">メソッド名</th>
+      <th class="col-1 index-th text-center">check</th>
+    </tr>
+
+    <% rails.each do |rail| %>
+      <tr class="row">
+        <% if rails.first.id == rail.id %>
+          <td class="col-2 td1"><strong>Railsメソッド</strong></td>
+        <% else %>
+          <td class="col-2 td1"></td>
+        <% end %>
+        <td class="col-9"><%= link_to rail.name + "メソッド", rail %></td>
+        <td class="col-1 text-center">
+          <%= "✔️" if Comprehension.find_by(user_id: current_user.id, blog_id: rail.id).present? %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>

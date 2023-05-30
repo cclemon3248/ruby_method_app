@@ -1,0 +1,38 @@
+<p class="notice">以下の内容で、記事を作成する。</p>
+
+<%= form_with(model: @blog, local: true) do |form| %>
+  <%= form.hidden_field :name %>
+  <%= form.hidden_field :ruby_rails %>
+  <%= form.hidden_field :content %>
+  <%= form.hidden_field :code1 %>
+  <%= form.hidden_field :code2 %>
+  <%= form.hidden_field :code3 %>
+
+  <h2 class="display-5 border-bottom pb-2 mt-3 mb-3"><%= @blog.name %>メソッド</h1>
+  <h3>１。定義</h3>
+  <p class="h3-p"><%= @blog.content %></p>
+
+  <h3>２。例文</h3>
+  <% if @blog.code1.present? %>
+    <h4>基本構文</h4>
+    <p><%= simple_format @blog.code1, class: "h3-p" %></p>
+  <% end %>
+
+  <h4>使用例</h4>
+  <pre>
+    <code class="ruby">
+      <%= simple_format(@blog.code2) %>
+    </code>
+  </pre>
+
+  <% if @blog.code3.present? %>
+    <pre>
+      <code class="ruby">
+        <%= simple_format(@blog.code3) %>
+      </code>
+    </pre>
+  <% end %>
+
+  <%= form.submit  "登録する", class: "btn btn-secondary" %>
+  <%= form.submit "戻る", name: 'back', class: "btn btn-secondary" %>
+<% end %>

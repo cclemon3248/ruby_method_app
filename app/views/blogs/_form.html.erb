@@ -1,0 +1,46 @@
+<% if @blog.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@blog.errors.count, "error") %> prohibited this <%= @blog.name %> from being saved:</h2>
+    <ul>
+    <% @blog.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with(model: @blog, local: true, url: choose_new_or_edit ) do |f| %>
+  <table class="table table-bordered col-10">
+    <tbody>
+      <tr>
+        <th class="col-2 table-active"><%= f.label :name, "メソッド名" %></th>
+        <td class="col-10"><%= f.text_field :name %><span>~20文字</span></td>
+      </tr>
+      <tr>
+        <th class="table-active"><%= f.label :ruby_rails, "種類" %></th>
+        <td><%= f.select :ruby_rails, {"Rubyメソッド": "Ruby", "Railsメソッド": "Rails"}, prompt: '選択してください' %></td>
+      </tr>
+      <tr>
+        <th class="table-active"><%= f.label :content, "定義" %></th>
+        <td><%= f.text_area :content, size: "80x4"%><span>~320文字</span></td>
+      </tr>
+      <tr>
+        <th class="table-active"><%= f.label :code1 %></th>
+        <td><%= f.text_area :code1, size: "80x20" %><span>~1600文字</span></td>
+      </tr>
+      <tr>
+        <th class="table-active"><%= f.label :code2 %></th>
+        <td><%= f.text_area :code2, size: "80x20" %><span>~1600文字</span></td>
+      </tr>
+      <tr>
+        <th class="table-active"><%= f.label :code3 %></th>
+        <td><%= f.text_area :code3, size: "80x20" %><span>~1600文字</span></td>
+      </tr>
+      <tr>
+        <td colspan="2" class="text-center"><%= f.submit "記事を保存", class: "btn btn-secondary" %></td>
+      </tr>
+    </tbody>
+  </table>
+<% end %>
+  
+<%= link_to "ブログ一覧画面にもどる", blogs_path %>

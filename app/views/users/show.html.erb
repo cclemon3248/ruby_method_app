@@ -1,0 +1,27 @@
+<div class="show-background">
+<h2 class="display-5 border-bottom pb-2 mt-3 mb-3">アカウント情報</h2>
+<p>現在、ログインしているユーザーの情報です。</p>
+
+
+<div class="account-block">
+  <div class="row">
+    <div class="col-3">
+      <div class="text-center">
+      <%= image_tag '1907768.jpg', class:"account-images" %>
+      </div>
+    </div>
+    <div class="col-8">
+      <p>お名前</p>
+      <div class="account-font-size border-bottom"><%= @user.name %></div>
+      <p>メールアドレス</p>
+      <div class="account-font-size border-bottom"><%= @user.email %></div>
+      <p>点数</p>
+      <div class="account-font-size border-bottom">
+        <%= @count %> / <%= @blogs.all.count %> 点
+      </div>
+      <%= link_to "編集する", edit_user_path, class: "btn btn-secondary btn-button " %>
+      <%= link_to "退会する", @user, method: :delete, data: { confirm: "本当にいいですか？" }, class: "btn btn-link btn-button" %>
+    </div>
+    </div>
+  </div>
+</div>
