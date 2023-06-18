@@ -1,6 +1,6 @@
 user = User.create(
-  name: "admin",
-  email: "domain@example.com",
+  name: "guest",
+  email: "guest@example.com",
   password: "qwerty"
 )
 
