@@ -6,10 +6,10 @@ class HomeController < ApplicationController
   end
 
   def ruby
-    @blogs = current_user.favorite_blogs.where(ruby_rails: "Ruby")
+    @blogs = current_user.blogs.where(ruby_rails: "Ruby")
   end
   
   def rails
-    @rails = current_user.favorite_blogs.where(ruby_rails: "Rails")
+    @rails = current_user.blogs.where(ruby_rails: "Rails")
   end
 end
