@@ -17,7 +17,7 @@
       <div class="account-font-size border-bottom"><%= @user.email %></div>
       <p>点数</p>
       <div class="account-font-size border-bottom">
-        <%= @count %> / <%= @blogs.all.count %> 点
+        <%= @count %> / <%= @blogs.count %> 点
       </div>
       <%= link_to "編集する", edit_user_path, class: "btn btn-secondary btn-button " %>
       <%= link_to "退会する", @user, method: :delete, data: { confirm: "本当にいいですか？" }, class: "btn btn-link btn-button" %>
