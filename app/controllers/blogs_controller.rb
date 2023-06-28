@@ -1,5 +1,6 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
+  before_action :identification, only: [:show]
 
   def index
     @blogs = Blog.where(ruby_rails: 'Ruby')
@@ -62,5 +63,12 @@ class BlogsController < ApplicationController
     
     def blog_params
       params.require(:blog).permit(:name, :content, :code1, :code2, :code3, :ruby_rails)
+    end
+
+    def identification
+      current_path = URI.parse(request.url).path
+      blog_id = current_path.split("/").last
+      user_id = Blog.find_by(id: blog_id).user_id
+      redirect_to blogs_path unless current_user.id == user_id
     end
 end
