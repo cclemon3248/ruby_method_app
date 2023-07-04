@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    models:
+      blog: ブログ
+      user: ユーザー
+    attributes:
+      blog:
+        name: メソッド名
+        content: 定義
+        ruby_rails: 種類
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 確認用パスワード
