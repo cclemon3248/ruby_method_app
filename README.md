@@ -8,12 +8,12 @@
 - PostgreSQL
 
 ## 実行手順
-> git@github.com:cclemon3248/ruby_method_app.git  
-cd ruby_method_app  
-bundle install  
-rails db:create  
-rails db:migrate  
-rails db:seed
-rails s
+1.git@github.com:cclemon3248/ruby_method_app.git  
+1.cd ruby_method_app  
+1.bundle install  
+1.rails db:create  
+1.rails db:migrate  
+1.rails db:seed
+1.rails s
 
 ## ER図
