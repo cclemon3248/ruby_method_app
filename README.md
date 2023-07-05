@@ -19,3 +19,4 @@ Ruby、Railsメソッドをメモするためのアプリです。
 1. rails s
 
 ## ER図
+![er図](./erd.pdf)
